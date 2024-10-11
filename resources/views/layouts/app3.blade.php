@@ -15,15 +15,29 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-image: url('/asset/images/bga1.jpg');
+            position: relative;
+            color: #fff;
+            z-index: 1;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('/asset/images/bga2.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            color: #fff;
+            opacity: 70%;
+            z-index: -1;
+            pointer-events: none;
         }
 
         .card {
-            background-color: rgba(0, 0, 0, 0.6);
+
             border-radius: 20px;
             padding: 30px;
             width: 300px;
@@ -33,7 +47,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            backdrop-filter: blur(5px);
+
         }
 
         .profile-img {
@@ -59,8 +73,7 @@
             padding: 10px;
             margin-bottom: 15px;
             border-radius: 10px;
-            background-color: rgba(120, 238, 213, 0.2);
-            color: #fff;
+            color: #00ff91;
             font-weight: bold;
             transition: all 0.3s ease;
         }
@@ -72,7 +85,8 @@
 
         h1 {
             margin: 0;
-            font-size: 1.2em;
+            font-size: 30px;
+            font-weight: bold;
         }
 
         @keyframes fadeIn {
