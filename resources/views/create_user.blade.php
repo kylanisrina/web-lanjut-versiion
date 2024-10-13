@@ -3,6 +3,7 @@
 
     <div class="container">
         <div class="logo">kylo</div>
+        <a href="{{ route('user.list') }}"></a>
         <form action="{{ route('user.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <h1>Create User</h1>
