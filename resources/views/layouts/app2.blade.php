@@ -59,6 +59,33 @@
             background-color: #218838;
         }
 
+        .view, .edit, .delete {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .view {
+            background-color: #8b5cf6;
+        }
+
+        .edit {
+            background-color: #10b981;
+        }
+
+        .delete {
+            background-color: #ef4444;
+        }
+
+        .view:hover, .edit:hover, .delete:hover {
+            opacity: 0.8;
+        }
+
         .table-container {
             width: 100%;
             max-width: 800px;

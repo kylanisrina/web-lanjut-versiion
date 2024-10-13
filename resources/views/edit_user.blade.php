@@ -1,4 +1,4 @@
-@extends('layouts.app2')
+@extends('layouts.app4')
 <div class="decoration extra-small" style="top: 5%; left: 5%; animation: float 4s ease-in-out infinite;">⭐</div>
 <div class="decoration medium" style="top: 15%; right: 10%; animation: float 6s ease-in-out infinite;">🌙</div>
 <div class="decoration large" style="bottom: 10%; left: 15%; animation: float 5s ease-in-out infinite;">❤️</div>
@@ -24,53 +24,51 @@
 <div class="decoration small" style="bottom: 85%; left: 65%; animation: float 5.5s ease-in-out infinite;">❤️</div>
 <div class="decoration extra-large" style="top: 90%; right: 60%; animation: float 4.5s ease-in-out infinite;">⭐</div>
 <div class="decoration medium" style="bottom: 90%; left: 70%; animation: float 7s ease-in-out infinite;">🌙</div>
-@section ('content')
+@section('content')
+<div>
+    <a href="{{ route('user.list') }}" class="btn-list-user">List User</a>
 
-<div class="content-wrapper">
-    <div class="btn-container">
-        <a href="{{ route('user.create') }}" class="btn btn-success">Tambah User</a>
-    </div>
-    <div class="table-container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">NPM</th>
-                    <th scope="col">Kelas</th>
-                    <th scope="col">Foto</th>
-                    <th scope="col">Aksi</th>
-                </tr>
-            </thead>
-            <tbody class="table-group-divider">
-                @foreach ($users as $user)
-                    <tr>
-                        <td><?= $user['id'] ?></td>
-                        <td><?= $user['nama'] ?></td>
-                        <td><?= $user['npm'] ?></td>
-                        <td><?= $user['nama_kelas'] ?></td>
-                        <td><img src="{{ Storage::url($user->foto) }}" alt="Foto User" width="100"></td>
-                        <td>
-                             <!-- View -->
-                        <a href="{{ route('user.show', $user['id']) }}" class="view">View</a>
+    <form action="{{ route('user.update', $user['id']) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        <div class="container">
+            <h1 class="text-center">Input Data</h1>
+            <div class="konten-2">
+                <label for="nama" class="form-label">Nama</label>
+                <input type="text" class="form-control" name="nama" id="nama" value="{{ old('nama', $user->nama) }}"
+                    placeholder="Nama anda">
+            </div>
 
-                        <!-- Edit -->
-                        <a href="{{ route('user.edit', $user['id']) }}" class="edit">Edit</a>
+            <div class="konten-2">
+                <label for="npm" class="form-label">NPM</label>
+                <input type="text" class="form-control" name="npm" id="npm" value="{{ old('npm', $user->npm) }}"
+                    placeholder="NPM anda">
+            </div>
 
-                        <!-- Delete -->
-                        <form action="{{ route('user.destroy', $user['id']) }}" method="POST" style="display:inline-block;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="delete"
-                                onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">Delete</button>
-                        </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</div>
+            <div class="konten-2">
+                <label for="kelas" class="form-label">Kelas</label>
+                <select class="form-select" name="kelas_id" id="kelas_id">
+                    @foreach ($kelas as $kelasItem)
+                    <option value="{{ $kelasItem->id }}" {{ $kelasItem->id == $user->kelas_id ? 'selected' : '' }}>
+                        {{ $kelasItem->nama_kelas }}
+                    </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="konten-2">
+                <label for="foto" class="form-label">Foto</label>
+                <input class="form-control" type="file" id="foto" name="foto">
+                @if ($user->foto)
+                <img src="{{ Storage::url($user->foto) }}" alt="Profile Picture" class="profile-img"></img>
+                @endif
+            </div>
+
+            <button type="submit" class="btn-submit">Submit</button>
+            <a href="{{ route('user.list') }}" class="btn-kembali">Kembali</a>
+        </div>
+    </form>
 </div>
 
- @endsection
+
+@endsection

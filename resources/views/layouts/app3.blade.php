@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Profile</title>
+    <title>Show</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
@@ -67,6 +67,21 @@
 
         .info {
             width: 100%;
+        }
+
+        .btn-kembali {
+            color: #e600ff;
+            box-shadow: 1px 1px 20px 1px rgb(123, 235, 255);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ffffff;
+            transition: background-color 0.3s ease;
         }
 
         .label {
