@@ -10,5 +10,5 @@
     </div>
 </div>
 {{-- // jangan lupa kasih perintah php artisan storage:link --}}
-
+{{-- pokoknya jangan lupa jalanin ini perintah yaa jangan sampe lupa --}}
 @endsection
